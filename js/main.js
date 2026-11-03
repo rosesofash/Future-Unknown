@@ -267,12 +267,19 @@ async function drawLine(from,startFrac=0,endFrac=1){
   next();
 }
 
-/* The plane: decoration only, beside the middle of the Sri Lanka → Germany line */
+/* Drawings that pop in beside the line: decoration only, not clickable */
+const decor=[];
+function showDecor(src,leg,s,w,h){ const g=el('g',{class:'plane','aria-hidden':'true'},layer);
+  el('image',{href:src,x:-w/2,y:-h/2,width:w,height:h,class:'pop'},g); const d={g,leg,s}; decor.push(d); placeDecor(d); return d; }
+function placeDecor(d){ if(!legs[d.leg]) return; const p=legs[d.leg].at(d.s), side=STOPS[d.leg].x<STOPS[d.leg+1].x?-1:1;
+  d.g.setAttribute('transform',`translate(${p.x+side*110} ${p.y-30})`); }
+/* the plane: halfway between Sri Lanka and Germany */
 let planeG=null;
-function showPlane(){ planeG=el('g',{class:'plane','aria-hidden':'true'},layer);
-  el('image',{href:PLANE_ART,x:-75,y:-34,width:150,height:68,class:'pop'},planeG); placePlane(); }
-function placePlane(){ if(!planeG||!legs[0]) return; const p=legs[0].at(.5), side=STOPS[0].x<STOPS[1].x?-1:1;
-  planeG.setAttribute('transform',`translate(${p.x+side*110} ${p.y-30})`); }
+function showPlane(){ planeG=showDecor(PLANE_ART,0,.5,150,68); }
+function placePlane(){ decor.forEach(placeDecor); }
+/* the fishing boat: halfway between the beacon and St. Shott's */
+let fishG=null;
+function showFishboat(from){ fishG=showDecor(FISHBOAT_ART,3,(from+1)/2,200,96); }
 
 /* Climax: the line falters and stops; only the beacon is left */
 let strength=0, effort=0, holding=false, beaconG=null, beaconAt=null;
@@ -339,7 +346,7 @@ async function rescue(made,n,stopAt){
   dayEl.querySelector('b').textContent='AUG 11, 1986'; dayEl.querySelector('b').style.opacity=1;
   dayEl.querySelector('span').textContent='Near St. Shott\'s, Newfoundland';
   /* the line comes back and carries on to the flag */
-  for(let k=stopAt+1;k<n;k++){ addDash(3,k/n); follow(legs[3].at(k/n).y); await wait(reduced?30:DASH_MS); }
+  for(let k=stopAt+1;k<n;k++){ addDash(3,k/n); if(!fishG&&k/n>=(stopAt/n+1)/2) showFishboat(stopAt/n); follow(legs[3].at(k/n).y); await wait(reduced?30:DASH_MS); }
   await wait(reduced?30:DASH_MS); stopFollow();
   setTimeout(()=>dayEl.classList.remove('show'),1800);
   await glideTo(STOPS[4].y,.5);
@@ -358,6 +365,7 @@ function skipToEnd(){
   dashes.splice(0).forEach(d=>d.node.remove());
   legs.forEach((_,leg)=>{ const n=dashCount(leg); for(let k=1;k<n;k++) addDash(leg,k/n); });
   if(!planeG) showPlane();
+  if(!fishG) showFishboat(Math.round(dashCount(3)*.55)/dashCount(3));
   STOPS.forEach(s=>{ s.g.classList.remove('active'); s.g.classList.add('shown','visited'); s.g.setAttribute('tabindex','0'); });
   startAudio(); setScene('calm');
   page.scrollTo({top:0}); document.getElementById('end').hidden=false; document.getElementById('explore').focus();

@@ -18,6 +18,7 @@ const WAVES_LEVEL = .28;
 const SONAR_LEVEL = .45;
 const CARD_DUCK = .2;          // while a card is open, the background drops to this fraction of its volume
 const PLANE_ART = 'img/plane.png'; // pops in halfway between Sri Lanka and Germany (not clickable)
+const FISHBOAT_ART = 'img/fishboat.png'; // pops in halfway between the yellow beacon and St. Shott's, once they're found
 
 /* ============================================================
    STORY CONTENT
