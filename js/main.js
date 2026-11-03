@@ -376,6 +376,7 @@ document.getElementById('srcList').innerHTML=Object.values(SOURCES).map(([t,u])=
 document.getElementById('replay').addEventListener('click',()=>location.reload());
 
 addEventListener('keydown',e=>{
+  if(!intro.hidden){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); begin(); } return; }
   if(!lightbox.hidden&&(e.key==='Escape'||e.key==='Enter')){ e.preventDefault(); closePhoto(); return; }
   if(e.target.closest&&e.target.closest('button')&&(e.key==='Enter'||e.key===' ')) return;
   if(e.key===' '&&mode==='beacon'){ e.preventDefault(); if(!holding){holding=true;audioCtx();} return; }
@@ -389,4 +390,8 @@ addEventListener('keydown',e=>{
 addEventListener('keyup',e=>{ if(e.key===' ') holding=false; });
 addEventListener('resize',layout);
 
-layout(); next();
+/* Intro: a short synopsis; the story starts on Begin */
+const intro=document.getElementById('intro');
+function begin(){ if(intro.hidden) return; intro.hidden=true; startAudio(); next(); }
+document.getElementById('begin').addEventListener('click',begin);
+layout(); document.getElementById('begin').focus();

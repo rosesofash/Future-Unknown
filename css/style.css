@@ -161,6 +161,13 @@ body.rec .tools,body.rec .hint,body.rec .wt{opacity:0;pointer-events:none}
 .sheet ul{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:6px}
 .sheet code{font-family:var(--mono);font-size:13px;color:var(--signal)}
 .sheet a{color:var(--chalk)}
+.intro-title{font-family:var(--hand);font-weight:var(--hand-wght);font-size:clamp(40px,7vw,64px);line-height:1;margin:0}
+.intro-by{font-family:var(--mono);font-size:11px!important;letter-spacing:.14em;text-transform:uppercase;color:var(--chalk-dim)!important;margin-top:-4px!important}
+.lede{font-family:var(--news);font-size:clamp(17px,2.2vw,20px)!important;line-height:1.5!important;text-wrap:pretty}
+.how{list-style:none;padding:0!important;margin-top:6px!important;gap:4px!important}
+.how li{font-family:var(--mono);font-size:12px!important;letter-spacing:.04em;color:var(--chalk-dim)!important}
+.how li::before{content:'· ';color:var(--signal)}
+#begin{margin-top:10px}
 .endline{font-family:var(--news);font-size:clamp(22px,3vw,30px);line-height:1.35;text-wrap:balance}
 .endline+.endline{color:var(--chalk-dim)}
 .src{font-size:13.5px!important;color:var(--chalk-dim)!important}
