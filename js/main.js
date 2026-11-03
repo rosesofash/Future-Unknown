@@ -163,7 +163,7 @@ function openCard(i,advancing){
       <div class="transcript" hidden>${s.transcript.map(t=>`<p>${t}</p>`).join('')}</div>`:''}
     </div>
     ${s.stamps?`<div class="stamps">${s.stamps.map(t=>`<p class="stamp reveal" ${delay()}>${t.t}</p>`).join('')}<cite class="reveal" ${delay()}>${SOURCES.interview[0]}</cite></div>`:''}
-    <div class="clips">${s.facts.map((f,k)=>f.todo?`<p class="todo reveal" ${delay()}><b>To add:</b> ${f.todo}</p>`:f.img?`<blockquote class="clip has-img reveal" ${delay()} role="button" tabindex="0" data-k="${k}">${f.t}<span class="view">View the page</span>${src(f)}</blockquote>`:`<blockquote class="clip reveal" ${delay()}>${f.t}${src(f)}</blockquote>`).join('')}</div>
+    <div class="clips">${s.facts.map((f,k)=>f.todo?`<p class="todo reveal" ${delay()}><b>To add:</b> ${f.todo}</p>`:f.img?`<blockquote class="clip has-img reveal" ${delay()} role="button" tabindex="0" data-k="${k}">${f.t}<span class="view">${f.img.label||'View the page'}</span>${src(f)}</blockquote>`:`<blockquote class="clip reveal" ${delay()}>${f.t}${src(f)}</blockquote>`).join('')}</div>
     ${s.video?`<div class="video reveal" ${delay()}>
       <div class="vframe"><button class="vplay" type="button"><svg viewBox="0 0 16 16">${PLAY_ICON}</svg><span>${s.video.title} · click to play</span></button></div>
       <cite>${SOURCES[s.video.s][0]} · <a href="${SOURCES[s.video.s][1]}" target="_blank" rel="noopener">Watch on CBC</a></cite>
@@ -195,7 +195,7 @@ function openCard(i,advancing){
   const tb=card.querySelector('.tbtn');   /* transcript stays hidden until asked for */
   if(tb) tb.addEventListener('click',()=>{ const box=card.querySelector('.transcript'), open=box.hidden; box.hidden=!open;
     tb.textContent=open?'Hide transcript':'Read transcript'; tb.setAttribute('aria-expanded',open); });
-  card.querySelectorAll('.clip.has-img').forEach(c=>{ const f=s.facts[+c.dataset.k], go=()=>showPhoto(f.img.src,f.img.caption,f.s);
+  card.querySelectorAll('.clip.has-img').forEach(c=>{ const f=s.facts[+c.dataset.k], go=()=>showPhoto(f.img.src,f.img.caption,f.img.s||f.s,f.img.cw);
     c.addEventListener('click',go); c.addEventListener('keydown',e=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); e.stopPropagation(); go(); } }); });
   const vp=card.querySelector('.vplay');   /* the video only loads when clicked */
   if(vp) vp.addEventListener('click',()=>{ s.player.pause(); stopExtras();

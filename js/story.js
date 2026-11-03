@@ -27,6 +27,7 @@ const FISHBOAT_ART = 'img/fishboat.png'; // pops in halfway between the yellow b
    The sources screen at the end always shows the full title. */
 const REVEAL_AT = 'rescue';
 const SOURCES = {
+  family:['Family photograph', ''],
   tamilHeritage:['Tamil Heritage, "Mullivaikal Tamil genocide images" (photographer not credited)', 'https://telibrary.com/en/custom-gallery/mullivaikal-tamil-genocide-images-18/'],
   aj19:['Al Jazeera, "Sri Lanka anniversary: 10 years since civil war ended," May 18, 2019', 'https://www.aljazeera.com/news/2019/05/sri-lanka-anniversary-10-years-civil-war-ended-190518160221811.html'],
   bpb80:['David Templin, "Hamburg 1980: Hotelzimmer oder Sammellager?", Deutschland Archiv, bpb, July 19, 2024 (photo © picture-alliance, Lothar Heidtmann)', 'https://www.bpb.de/themen/deutschlandarchiv/550559/hamburg-1980-hotelzimmer-oder-sammellager/'],
@@ -56,7 +57,7 @@ const SOURCES = {
    bed: background sound from this stop on ('calm' = soundscape, 'sea' = waves).
    popup: a photo that pops up in the centre whenever this card opens. cw: a content warning; the photo stays blurred until clicked.
    video: a video in the card that only loads when clicked.
-   a fact with img: clicking that clipping opens the image.
+   a fact with img: clicking that clipping opens the image (img.label, img.s and img.cw are optional).
    rate: play his main clip a little faster (1.05 = 5% faster; his pitch stays the same).
    transcript: his words in that clip, word for word (INTERVIEW-SELECTS.md), hidden until "Read transcript" is clicked.
    more: extra clips from the interview, listed under the clippings ("More from him").
@@ -64,8 +65,7 @@ const SOURCES = {
 const STOPS = [
   { id:'sri-lanka', side:'left', art:'img/sri-lanka.png', label:'Sri Lanka', coord:'7.9°N 80.8°E',
     when:'', year:'1983–1984', cta:'Click the flag',
-    popup:{src:'img/mullivaikkal-2009.jpg', caption:'Mullivaikkal, 2009. The war he fled ended that year.', s:['tamilHeritage','aj19'],
-      cw:'This photo shows the aftermath of violence at the end of the war.'},
+    popup:{src:'img/family-sri-lanka.jpg', caption:'His family, Sri Lanka, around 1979.', s:'family'},
     audio:'audio/01-sri-lanka.mp3', rate:1.05,
     transcript:[
       "So I decided to leave the country. If I stay there, there may be a danger for me.",
@@ -76,7 +76,9 @@ const STOPS = [
       {audio:'audio/set-aside/cousin-knew-the-way.mp3', title:'A cousin who knew the way to Germany'}
     ],
     facts:[
-      {t:'In 2022, Canada\'s House of Commons unanimously acknowledged the genocide of Tamils in Sri Lanka and named May 18 Tamil Genocide Remembrance Day.', s:'hoc'}
+      {t:'In 2022, Canada\'s House of Commons unanimously acknowledged the genocide of Tamils in Sri Lanka and named May 18 Tamil Genocide Remembrance Day.', s:'hoc'},
+      {t:'Mullivaikkal, 2009. The war he fled ended in 2009. To this day, no one has been held accountable for the crimes committed.', s:'aj19', img:{src:'img/mullivaikkal-2009.jpg', label:'View the photo (content warning)',
+        caption:'Mullivaikkal, 2009. The war he fled ended in 2009. To this day, no one has been held accountable for the crimes committed.', s:['tamilHeritage','aj19'], cw:'This photo shows the aftermath of violence at the end of the war.'}}
     ]},
   { id:'germany', side:'right', art:'img/germany.png', label:'West Germany', coord:'52.5°N 13.4°E',
     when:'', year:'1984–1986', cta:'Click Germany',
@@ -122,9 +124,8 @@ const STOPS = [
       "So after three days, we were just floating on the sea without any help. And the water is coming into the boat, so we have to put the water out of the boat many times. And we were falling asleep… [if we fall asleep],we will fall down into the sea, and nobody knows how to swim, because we didn't eat for several days."
     ], quote:'Seventy people in each. Can you imagine? It\'s only carry 35, but it doubled it up.',
     more:[
-      {audio:'audio/set-aside/STAR-family-with-children-chains.mp3', title:'The family with small children'},
-      {audio:'audio/set-aside/fuel-ran-out-tools-fell.mp3', title:'The fuel ran out, and the tools fell into the sea'},
-      {audio:'audio/set-aside/praying-bible-singing.mp3', title:'Praying, reading the Bible, singing'}
+      {audio:'audio/set-aside/family-with-children-and-praying.mp3', title:'The family with small children, and praying in the lifeboat'},
+      {audio:'audio/set-aside/fuel-ran-out-tools-fell.mp3', title:'The fuel ran out, and the tools fell into the sea'}
     ],
     stamps:[ {t:'Two boats. One engine.'}, {t:'Seventy people in each.'}, {t:'Nobody knows how to swim.'} ],  /* his words, from the interview */
     facts:[
