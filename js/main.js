@@ -278,7 +278,7 @@ function placePlane(){ if(!planeG||!legs[0]) return; const p=legs[0].at(.5), sid
 let strength=0, effort=0, holding=false, beaconG=null, beaconAt=null;
 const NEED=1.7;
 async function drift(){
-  mode='drift'; hint('',false); startAudio(); setScene('drift');
+  mode='drift'; hint('',false); startAudio();   /* waves keep going under the sonar through days 1-4 */
   const leg=3, n=dashCount(leg), stopAt=Math.round(n*.55), made=[];
   dayEl.classList.add('show'); let lastPing=-1e9;
   for(let k=1;k<=stopAt;k++){
@@ -293,7 +293,7 @@ async function drift(){
   }
   await wait(reduced?30:2400);
   stopFollow();
-  document.body.classList.add('lost');
+  document.body.classList.add('lost'); setScene('drift');   /* waves fade out: only the yellow dot and its sonar */
   made.forEach(d=>d.node.style.opacity=.08);
   await wait(reduced?30:2400);
   beaconAt={leg,s:stopAt/n};

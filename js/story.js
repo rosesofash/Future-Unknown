@@ -9,7 +9,7 @@ const CURVE = 1.7;            // how much the line bends between stops (0 = stra
 const GLIDE_MS = 600;         // after the last dash, time to settle the page on the next stop
 const DASH_LEN = 12;          // length of each dash in px (0 = round dots)
 /* Background sound: one bed plays at a time. The soundscape until the lifeboats, then the waves,
-   then only the sonar while the line fades, then the soundscape again after the rescue. */
+   with the sonar while the line fades (days 1-4), only the sonar at the yellow dot, then the soundscape again after the rescue. */
 const SOUNDSCAPE_FILE = 'sfx/soundscape.mp3';
 const WAVES_FILE = 'sfx/waves.mp3';
 const SONAR_FILE = 'sfx/sonar.mp3';
