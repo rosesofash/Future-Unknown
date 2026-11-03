@@ -64,9 +64,9 @@ STOPS.forEach((s,i)=>{
   el('image',{href:s.art,x:-80,y:-64-(s.artLift||0),width:160,height:100},g);
   el('circle',{class:'hit',r:40},g);
   el('text',{class:'lbl',y:52},g).textContent=s.label;
-  el('text',{class:'coord',y:68},g).textContent=s.coord;
+  el('text',{class:'coord',y:68},g).textContent=[s.coord,s.year].filter(Boolean).join(' · ');
   s.g=g;
-  const go=()=>{ if(g.classList.contains('active')) openCard(i,true); else if(g.classList.contains('visited')) openCard(i,false); };
+  const go=()=>{ if(i===pendingIdx||g.classList.contains('active')) openCard(i,true); else if(g.classList.contains('visited')) openCard(i,false); };
   g.addEventListener('click',e=>{e.stopPropagation();go();});
   g.addEventListener('keydown',e=>{if(openIdx>=0||mode==='beacon') return; if(e.key==='Enter'||e.key===' '){e.preventDefault();e.stopPropagation();go();}});
 });
@@ -138,7 +138,7 @@ function bars(seed){ let x=seed*9301+49297, out=''; for(let i=0;i<48;i++){ x=(x*
 /* ============================================================
    CARD
    ============================================================ */
-let step=-1, mode='idle', openIdx=-1;
+let step=-1, mode='idle', openIdx=-1, pendingIdx=-1;
 const PLAY_ICON='<path d="M3 1.5 L14 8 L3 14.5 Z"/>', PAUSE_ICON='<path d="M3 2 H6.5 V14 H3 Z M9.5 2 H13 V14 H9.5 Z"/>';
 function renderVoice(s){
   const v=card.querySelector('.voice'); if(!v) return;
@@ -153,7 +153,7 @@ function openCard(i,advancing){
   let d=0; const delay=()=>`style="animation-delay:${(d+=380)}ms"`;
   card.innerHTML=`
     <h2 class="place reveal">${s.label}</h2>
-    <p class="meta reveal" ${delay()}>${[s.when,s.coord].filter(Boolean).join(' · ')}</p>
+    <p class="meta reveal" ${delay()}>${[s.when||s.year,s.coord].filter(Boolean).join(' · ')}</p>
     <div class="voice reveal" ${delay()}>
       <button class="play" type="button" aria-label="Play recording"><svg viewBox="0 0 16 16"><path d="M3 1.5 L14 8 L3 14.5 Z"/></svg></button>
       <div class="vlabel">His voice${s.quote?`<em>“${s.quote}”</em>`:''}</div>
@@ -202,7 +202,7 @@ function openCard(i,advancing){
     vp.replaceWith(el2('iframe',{src:s.video.embed,title:s.video.title,allow:'autoplay; fullscreen; encrypted-media',allowfullscreen:''})); });
   if(s.popup) setTimeout(()=>{ if(openIdx===i) showPhoto(s.popup.src,s.popup.caption,s.popup.s,s.popup.cw); },900);
   hint('',false);
-  if(advancing){ s.g.classList.remove('active'); s.g.classList.add('visited'); }
+  if(advancing){ pendingIdx=i; s.g.classList.remove('active'); s.g.classList.add('visited'); }   /* current until Continue is pressed */
   scrollToY(s.y, innerWidth<=720?.2:.42);
 }
 /* Photo pop-up, centred over the map */
@@ -236,7 +236,8 @@ function closeCard(advancing){
   STOPS[openIdx].player.pause(); stopExtras(); closePhoto();
   card.classList.remove('open'); openIdx=-1;
   cardOpen=false; mix();
-  if(advancing) next();
+  if(advancing){ pendingIdx=-1; next(); }
+  else if(pendingIdx>=0){ hint(STOPS[pendingIdx].cta); STOPS[pendingIdx].g.classList.add('active'); }   /* closed an old card: back to the current stop */
 }
 card.addEventListener('dragover',e=>{e.preventDefault();card.classList.add('drop');});
 card.addEventListener('dragleave',()=>card.classList.remove('drop'));
@@ -366,7 +367,7 @@ async function rescue(made,n,stopAt){
 /* Skip to end: the whole line, every stop open to revisit, then the ending */
 const skipBtn=document.getElementById('skipBtn');
 function skipToEnd(){
-  if(skipped) return; skipped=true; skipBtn.hidden=true;
+  if(skipped) return; skipped=true; skipBtn.hidden=true; pendingIdx=-1;
   if(openIdx>=0) closeCard(false); closePhoto();
   mode='free'; holding=false; stopFollow(); hint('',false);
   document.body.classList.remove('lost'); page.classList.remove('locked'); dayEl.classList.remove('show');

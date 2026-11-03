@@ -50,6 +50,7 @@ const SOURCES = {
    audio: his clip for that stop (see INTERVIEW-SELECTS.md for what is in each one).
    quote: a line from that clip, shown under the play button. Keep it word for word from the recording.
    when / coord: shown under the place name. Leave when blank unless a source gives it.
+   year: shown next to the coordinates on the map (and on the card when there is no exact date). From his account.
    dashesAfter: draw exactly this many dashes to the next stop (and place it closer).
    artLift: move the drawing up this many px (more space above the place name).
    bed: background sound from this stop on ('calm' = soundscape, 'sea' = waves).
@@ -62,13 +63,13 @@ const SOURCES = {
          title is a short description of the clip, not a quote. */
 const STOPS = [
   { id:'sri-lanka', side:'left', art:'img/sri-lanka.png', label:'Sri Lanka', coord:'7.9°N 80.8°E',
-    when:'', cta:'Click the flag',
+    when:'', year:'1983–1984', cta:'Click the flag',
     popup:{src:'img/mullivaikkal-2009.jpg', caption:'Mullivaikkal, 2009. The war he fled ended that year.', s:['tamilHeritage','aj19'],
       cw:'This photo shows the aftermath of violence at the end of the war.'},
     audio:'audio/01-sri-lanka.mp3', rate:1.05,
     transcript:[
       "So I decided to leave the country. If I stay there, there may be a danger for me.",
-      "And so I left the country, finally. That time I was able to take the flight. I managed to come behind so many hurdles and troubles to get to Colombo, to the airport, because of the war. And there's so many checkpoints… There was two incidents that I would have been died. But anyway, I managed to escape. They started to shoot randomly, and people all over the place, scattered. So somehow I was running, and I was lucky to survive."
+      "And so I left the country, finally. That time I was able to take the flight. I managed to come after so many hurdles and troubles to get to Colombo, to the airport, because of the war. And there were so many checkpoints… There was two incidents that I would have been [killed]. But anyway, I managed to escape. They started to shoot randomly, and people all over the place, scattered. So somehow I was running, and I was lucky to survive."
     ], quote:'If I stay there, there may be a danger for me.',
     more:[
       {audio:'audio/set-aside/parents-in-jaffna-targeting-men.mp3', title:'His parents in Jaffna, and who was being targeted'},
@@ -78,13 +79,13 @@ const STOPS = [
       {t:'In 2022, Canada\'s House of Commons unanimously acknowledged the genocide of Tamils in Sri Lanka and named May 18 Tamil Genocide Remembrance Day.', s:'hoc'}
     ]},
   { id:'germany', side:'right', art:'img/germany.png', label:'West Germany', coord:'52.5°N 13.4°E',
-    when:'', cta:'Click Germany',
+    when:'', year:'1984–1986', cta:'Click Germany',
     popup:{src:'img/hamburg-1980-refugee-hostel.jpg', caption:'Vietnamese refugees outside their hostel in Hamburg, West Germany, August 1980.', s:'bpb80'},
     audio:'audio/02-germany.mp3', rate:1.05,
     transcript:[
-      "Then we cannot work. We have a barrier, where we cannot go out of this area… we have to live in that area. How long we can live like that, you know?",
-      "Approached me, and we trusted them. We thought, okay, it's a good opportunity, so we can come to Canada. We can manage English.",
-      "They said it's going to be a kind of cruise. So we didn't have any choice. That's all, we believed it, and we decided to go, come with the boat."
+      "We weren't able to establish ourselves here. We cannot work there. We have a barrier, where we cannot go out of this area… we have to live in that area. How long we can live like that, you know?",
+      "So they approached me, and we trusted them. We thought, okay, it's a good opportunity, we can come to Canada. We can manage English.",
+      "They said it's going to be a kind of cruise. So we didn't have any choice. That's all, we believed it, and we decided to go, [go] with the boat."
     ], quote:'Then we cannot work… we cannot go out of this area… How long we can live like that, you know?',
     more:[
       {audio:'audio/set-aside/shelter-food-cannot-study.mp3', title:'Shelter and food, but no chance to study'},
@@ -96,10 +97,10 @@ const STOPS = [
       {t:'Asylum seekers there were not allowed to work for two years.', s:'pier'}
     ]},
   { id:'aurigae', side:'left', art:'img/aurigae.png', label:'Aurigae · the “cruise”', coord:'53.3°N 8.5°E', dashesAfter:5, artLift:10,
-    when:'July 28, 1986', cta:'Click the ship',
+    when:'July 28, 1986', year:'1986', cta:'Click the ship',
     audio:'audio/03-ship.mp3', rate:1.05,
     transcript:[
-      "But eventually the story was different. When we reached the boat, it was a cargo boat. Not a regular passenger boat… I already left the city and we cannot go back. And then I was fear and everything.",
+      "But eventually the story was different. When we reached the boat, it was a cargo boat. Not a regular passenger boat… I already left the city and we cannot go back. And then I was [afraid] and everything.",
       "I think they used to deliver animals, and oil, kind of cargo. Very rusted and smelly.",
       "And then when we went inside, there was food that was dumped about a month ago. Old, moldy… fungus, dumped like a hill. Bread, especially bread. Thousands of breads piled like a hill."
     ], quote:'When we reached the boat, it was a cargo boat… I already left the city and we cannot go back.',
@@ -113,12 +114,12 @@ const STOPS = [
       {t:'Its captain and owner was a West German, Wolfgang Bindel.', s:'pier'}
     ]},
   { id:'lifeboats', side:'right', art:'img/lifeboat.png', label:'The lifeboats', coord:'Middle of the sea', bed:'sea',
-    when:'August 1986', cta:'Click the lifeboat',
+    when:'August 1986', year:'1986', cta:'Click the lifeboat',
     audio:'audio/04-lifeboat.mp3', rate:1.1,
     transcript:[
       "And eventually they left us very far away, about 200, 300 miles away.",
-      "In the small boat. Two boats with one engine… they tied each other… and nobody knows how to ride the boat. We are not experienced. We are regular people, not from fishermen families… The boat can only carry 30 people each, but we were 135 or something. Seventy people in each. Can you imagine? It's only carry 35, but it doubled it up. And we was just floating in the sea. We don't know where to go and how to do.",
-      "So after three days, we were just floating on the sea without any help. And the water is coming into the boat, so we have to put the water out of the boat many times. And we were falling asleep… we will fall down into the sea, and nobody knows how to swim, because we didn't eat for several days."
+      "In the small boat. Two boats with one engine… they tied [them to] each other and only gave us one engine… and nobody knows how to ride the boat. We are not experienced. We are regular people, not from fishermen families, so 99% of people didn't know how to operate the boat.… The boat can only carry 30 people each, but we were 135 or something. Seventy people in each. Can you imagine? It's only carry 35, but it doubled it up. And we was just floating in the sea. We don't know where to go and how to do.",
+      "So after three days, we were just floating on the sea without any help. And the water is coming into the boat, so we have to put the water out of the boat many times. And we were falling asleep… [if we fall asleep],we will fall down into the sea, and nobody knows how to swim, because we didn't eat for several days."
     ], quote:'Seventy people in each. Can you imagine? It\'s only carry 35, but it doubled it up.',
     more:[
       {audio:'audio/set-aside/STAR-family-with-children-chains.mp3', title:'The family with small children'},
@@ -131,14 +132,14 @@ const STOPS = [
       {t:'They had been told they would be in Montreal in four hours.', s:'cbc16'}
     ]},
   { id:'rescue', side:'left', art:'img/canada.png', label:'St. Shott\'s, Newfoundland', coord:'46.6°N 53.6°W',
-    when:'August 11, 1986', cta:'Click the flag',
+    when:'August 11, 1986', year:'1986', cta:'Click the flag',
     popup:{src:'img/aug-1986-boat.jpg', caption:'A group of Sri Lankan refugees on the deck of a tug boat that rescues them off the coast of Newfoundland, 12 August 1986.', s:'cpPhoto'},
     audio:'audio/05-rescue.mp3', rate:1.05,
     transcript:[
-      "…just floating, floating, floating, floating. And third day, it was kind of dark, and all of a sudden the sun came. We were able to see some boats fishing there, so we were waving. We thought we are almost dying, and people were praying, and hugging each other.",
-      "And then we were able to see. There was a fisherman, and we waved our clothes and everything, and they saw us. So they came to us, and immediately took us and put us in their boat.",
+      "…just floating, floating, floating, floating. And third day, it was kind of dark, and all of a sudden the sun came. We were able to see some boats fishing there, so we were waving. We thought we are almost [dead], and people were praying, and hugging each other.",
+      "And then we were able to see. There was a fisherman, and we waved our clothes and everything, and somehow they saw us. So they came to us, and immediately took us and put us in their boat.",
       "Yeah, luckily everybody survived.",
-      "Welcome to Canada. Welcome to Canada. Welcome to Canada."
+      "There were signs: Welcome to Canada. Welcome to Canada. Welcome to Canada."
     ], quote:'All of a sudden the sun came… We thought we are almost dying.',
     more:[
       {audio:'audio/set-aside/boat-didnt-capsize-70-each.mp3', title:'Seventy in each boat, and it didn\'t capsize'},
@@ -153,12 +154,12 @@ const STOPS = [
       {t:'“Ship at centre of refugee storm.”', s:'star86', img:{src:'img/toronto-star-1986-08-16.webp', caption:'The Toronto Star, Saturday, August 16, 1986, page A8.'}}
     ]},
   { id:'canada', side:'right', art:'img/canada.png', label:'Canada', coord:'Newfoundland',
-    when:'1986 onward', cta:'Click Canada',
+    when:'1986 onward', year:'1986', cta:'Click Canada',
     video:{embed:'https://www.cbc.ca/i/phoenix/player/syndicate/?mediaId=1.3183205', title:'CBC News', s:'cbcVideo'},
     audio:'audio/06-canada.mp3', rate:1.05,
     transcript:[
-      "They thought that we came from Sri Lanka. That is the only part they didn't like… unfortunately, we have to come from Germany as well, because there's no life for us.",
-      "But unfortunately, we have to escape from our own country. And Germany is the second time… We are human. We don't only just live for life. We want to do something and do well. That's the reason we came, and we are contributing to Canada now."
+      "They thought that we came from Sri Lanka. That is the only part they didn't like… unfortunately, we have to come from Germany as well, because there's no life for us there.",
+      "But unfortunately, we have to escape from our own country. And Germany the second time… We are human. We don't only just live for life. We want to do something and do well. That's the reason we came, and we are contributing to Canada now."
     ], quote:'We want to do something and do well. That\'s the reason we came.',
     more:[
       {audio:'audio/set-aside/permanent-residence-took-a-while.mp3', title:'Why permanent residence took a while'},
