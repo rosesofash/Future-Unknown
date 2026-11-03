@@ -77,7 +77,7 @@ const STOPS = [
       {t:'In 1986 The New York Times reported that West Germany had received some 30,000 Tamil refugees.', s:'pier'},
       {t:'Asylum seekers there were not allowed to work for two years.', s:'pier'}
     ]},
-  { id:'aurigae', side:'left', art:'img/aurigae.png', label:'Aurigae · “the cruise”', coord:'53.3°N 8.5°E', dashesAfter:5, artLift:10,
+  { id:'aurigae', side:'left', art:'img/aurigae.png', label:'Aurigae · the “cruise”', coord:'53.3°N 8.5°E', dashesAfter:5, artLift:10,
     when:'July 28, 1986', cta:'Click the ship',
     audio:'audio/03-ship.mp3', quote:'When we reached the boat, it was a cargo boat… I already left the city and we cannot go back.',
     more:[
