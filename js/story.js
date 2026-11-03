@@ -27,6 +27,9 @@ const FISHBOAT_ART = 'img/fishboat.png'; // pops in halfway between the yellow b
    The sources screen at the end always shows the full title. */
 const REVEAL_AT = 'rescue';
 const SOURCES = {
+  tamilHeritage:['Tamil Heritage, "Mullivaikal Tamil genocide images" (photographer not credited)', 'https://telibrary.com/en/custom-gallery/mullivaikal-tamil-genocide-images-18/'],
+  aj19:['Al Jazeera, "Sri Lanka anniversary: 10 years since civil war ended," May 18, 2019', 'https://www.aljazeera.com/news/2019/05/sri-lanka-anniversary-10-years-civil-war-ended-190518160221811.html'],
+  bpb80:['David Templin, "Hamburg 1980: Hotelzimmer oder Sammellager?", Deutschland Archiv, bpb, July 19, 2024 (photo © picture-alliance, Lothar Heidtmann)', 'https://www.bpb.de/themen/deutschlandarchiv/550559/hamburg-1980-hotelzimmer-oder-sammellager/'],
   hoc:   ['House of Commons Journals, No. 74, May 18, 2022', 'https://noscommunes.ca/Content/House/441/Journals/074/Journal074.PDF'],
   pier:  ['Pier 21, "The dramatic rescue of 155 people off Newfoundland"', 'https://pier21.ca/monthly-feature/dramatic-rescue-155-people-newfoundland-august-1986', 'Pier 21'],
   cbc16: ['CBC News, "Tamil refugees mark 30 years in Canada" (2016)', 'https://amp.cbc.ca/news/canada/newfoundland-labrador/tamil-refugees-mark-30-years-in-canada-1.3694420', 'CBC News (2016)'],
@@ -50,7 +53,7 @@ const SOURCES = {
    dashesAfter: draw exactly this many dashes to the next stop (and place it closer).
    artLift: move the drawing up this many px (more space above the place name).
    bed: background sound from this stop on ('calm' = soundscape, 'sea' = waves).
-   popup: a photo that pops up in the centre when this card first opens.
+   popup: a photo that pops up in the centre whenever this card opens. cw: a content warning; the photo stays blurred until clicked.
    video: a video in the card that only loads when clicked.
    a fact with img: clicking that clipping opens the image.
    transcript: his words in that clip, word for word (INTERVIEW-SELECTS.md), hidden until "Read transcript" is clicked.
@@ -59,6 +62,8 @@ const SOURCES = {
 const STOPS = [
   { id:'sri-lanka', side:'left', art:'img/sri-lanka.png', label:'Sri Lanka', coord:'7.9°N 80.8°E',
     when:'', cta:'Click the flag',
+    popup:{src:'img/mullivaikkal-2009.jpg', caption:'Mullivaikkal, 2009. The war he fled ended that year.', s:['tamilHeritage','aj19'],
+      cw:'This photo shows the aftermath of violence at the end of the war.'},
     audio:'audio/01-sri-lanka.mp3',
     transcript:[
       "So I decided to leave the country. If I stay there, there may be a danger for me.",
@@ -73,6 +78,7 @@ const STOPS = [
     ]},
   { id:'germany', side:'right', art:'img/germany.png', label:'West Germany', coord:'52.5°N 13.4°E',
     when:'', cta:'Click Germany',
+    popup:{src:'img/hamburg-1980-refugee-hostel.jpg', caption:'Vietnamese refugees outside their hostel in Hamburg, West Germany, August 1980.', s:'bpb80'},
     audio:'audio/02-germany.mp3',
     transcript:[
       "Then we cannot work. We have a barrier, where we cannot go out of this area… we have to live in that area. How long we can live like that, you know?",

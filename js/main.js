@@ -199,7 +199,7 @@ function openCard(i,advancing){
   const vp=card.querySelector('.vplay');   /* the video only loads when clicked */
   if(vp) vp.addEventListener('click',()=>{ s.player.pause(); stopExtras();
     vp.replaceWith(el2('iframe',{src:s.video.embed,title:s.video.title,allow:'autoplay; fullscreen; encrypted-media',allowfullscreen:''})); });
-  if(s.popup&&advancing) setTimeout(()=>{ if(openIdx===i) showPhoto(s.popup.src,s.popup.caption,s.popup.s); },900);
+  if(s.popup) setTimeout(()=>{ if(openIdx===i) showPhoto(s.popup.src,s.popup.caption,s.popup.s,s.popup.cw); },900);
   hint('',false);
   if(advancing){ s.g.classList.remove('active'); s.g.classList.add('visited'); }
   scrollToY(s.y, innerWidth<=720?.2:.42);
@@ -207,10 +207,13 @@ function openCard(i,advancing){
 /* Photo pop-up, centred over the map */
 const lightbox=document.getElementById('lightbox');
 const el2=(tag,attrs)=>{ const n=document.createElement(tag); for(const k in attrs) n.setAttribute(k,attrs[k]); return n; };
-function showPhoto(src,caption,s){
+function showPhoto(src,caption,s,cw){
   lightbox.querySelector('img').src=src; lightbox.querySelector('img').alt=caption;
-  lightbox.querySelector('figcaption').innerHTML=`${caption}${s?`<cite>${SOURCES[s][0]}</cite>`:''}`;
-  lightbox.hidden=false; lightbox.querySelector('.lb-x').focus(); }
+  const fig=lightbox.querySelector('figure'), cwb=lightbox.querySelector('.lb-cw');   /* content warning: blurred until the viewer chooses to see it */
+  fig.classList.toggle('cw',!!cw); cwb.hidden=!cw; if(cw) cwb.innerHTML=`<b>Content warning</b>${cw}<span>Click to view the photo</span>`;
+  lightbox.querySelector('figcaption').innerHTML=caption+[].concat(s||[]).map(k=>`<cite>${SOURCES[k][0]}</cite>`).join('');   /* one source or several */
+  lightbox.hidden=false; (cw?cwb:lightbox.querySelector('.lb-x')).focus(); }
+lightbox.querySelector('.lb-cw').addEventListener('click',e=>{ e.stopPropagation(); lightbox.querySelector('figure').classList.remove('cw'); e.currentTarget.hidden=true; lightbox.querySelector('.lb-x').focus(); });
 function closePhoto(){ lightbox.hidden=true; }
 lightbox.addEventListener('click',e=>{ if(e.target===lightbox||e.target.closest('.lb-x')) closePhoto(); });
 
@@ -390,6 +393,7 @@ document.getElementById('replay').addEventListener('click',()=>location.reload()
 
 addEventListener('keydown',e=>{
   if(!intro.hidden){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); begin(); } return; }
+  if(!lightbox.hidden&&e.key==='Enter'&&e.target.closest&&e.target.closest('.lb-cw')) return;   /* Enter on the warning reveals the photo */
   if(!lightbox.hidden&&(e.key==='Escape'||e.key==='Enter')){ e.preventDefault(); closePhoto(); return; }
   if(e.target.closest&&e.target.closest('button')&&(e.key==='Enter'||e.key===' ')) return;
   if(e.key===' '&&mode==='beacon'){ e.preventDefault(); if(!holding){holding=true;audioCtx();} return; }
