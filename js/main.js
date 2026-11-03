@@ -188,6 +188,7 @@ function openCard(i,advancing){
   play.addEventListener('click',()=>{ if(s.player.paused){stopExtras(); s.player.play().then(()=>icon(true)).catch(()=>{});} else {s.player.pause();icon(false);} });
   s.player.ontimeupdate=()=>{ const p=s.player.duration?s.player.currentTime/s.player.duration:0; waveBars.forEach((b,k)=>b.classList.toggle('p',k/waveBars.length<p)); };
   s.player.onended=s.player.onpause=()=>icon(false);
+  s.player.playbackRate=s.rate||1; s.player.preservesPitch=true;   /* a touch faster for the longest clips, same pitch */
   if(soundOn&&!s.missing){ s.player.currentTime=0; s.player.play().then(()=>icon(true)).catch(()=>{}); }
   card.querySelector('#cont').addEventListener('click',()=>closeCard(advancing));
   wireExtras(s);
