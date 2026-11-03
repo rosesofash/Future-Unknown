@@ -68,7 +68,7 @@ STOPS.forEach((s,i)=>{
   s.g=g;
   const go=()=>{ if(g.classList.contains('active')) openCard(i,true); else if(g.classList.contains('visited')) openCard(i,false); };
   g.addEventListener('click',e=>{e.stopPropagation();go();});
-  g.addEventListener('keydown',e=>{if(openIdx>=0) return; if(e.key==='Enter'||e.key===' '){e.preventDefault();e.stopPropagation();go();}});
+  g.addEventListener('keydown',e=>{if(openIdx>=0||mode==='beacon') return; if(e.key==='Enter'||e.key===' '){e.preventDefault();e.stopPropagation();go();}});
 });
 
 /* Scrolling: follow the newest dash */
@@ -317,7 +317,7 @@ async function drift(){
   beaconG=el('g',{class:'beacon',transform:`translate(${p.x} ${p.y})`},layer);
   el('circle',{class:'halo',r:40},beaconG); el('circle',{class:'bring',r:12},beaconG); el('circle',{class:'bring b2',r:12},beaconG); el('circle',{class:'core',r:5},beaconG);
   scrollToY(p.y,.5); page.classList.add('locked');
-  strength=.45; effort=0; mode='beacon';
+  strength=.45; effort=0; mode='beacon'; if(document.activeElement&&document.activeElement.blur) document.activeElement.blur();
   hint('Signal fading. Click, hold Space, or scroll to keep it alive<div class="meter" id="meter">'+'<i></i>'.repeat(10)+'</div>',false);
   sonar(.8);
   beaconLoop(made,n,stopAt);
@@ -396,16 +396,17 @@ addEventListener('keydown',e=>{
   if(!intro.hidden){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); begin(); } return; }
   if(!lightbox.hidden&&e.key==='Enter'&&e.target.closest&&e.target.closest('.lb-cw')) return;   /* Enter on the warning reveals the photo */
   if(!lightbox.hidden&&(e.key==='Escape'||e.key==='Enter')){ e.preventDefault(); closePhoto(); return; }
-  if(e.target.closest&&e.target.closest('button')&&(e.key==='Enter'||e.key===' ')) return;
-  if(e.key===' '&&mode==='beacon'){ e.preventDefault(); if(!holding){holding=true;audioCtx();} return; }
+  if(mode==='beacon'&&(e.key===' '||e.code==='Space')){ e.preventDefault(); e.stopPropagation(); holding=true; return; }   /* hold Space: keep the signal alive */
+  if(e.target.closest&&e.target.closest('button,[role=button]')&&(e.key==='Enter'||e.key===' ')) return;
   if((e.key==='Enter'||e.key==='ArrowRight')&&openIdx>=0){ e.preventDefault(); closeCard(card.dataset.adv==='1'); return; }
   if((e.key==='Enter'||e.key==='ArrowRight')&&mode==='stop'&&openIdx<0){ const it=SEQ[step]; if(it&&it.type==='stop'){ e.preventDefault(); openCard(it.i,true); } return; }
   if(e.key==='Escape'){ document.getElementById('end').hidden=true; if(openIdx>=0&&card.dataset.adv!=='1') closeCard(false); }
   if(e.key==='h'||e.key==='H') document.body.classList.toggle('rec');
   if(e.key==='m'||e.key==='M') toggleSound();
   if(e.key==='r'||e.key==='R') location.reload();
-});
-addEventListener('keyup',e=>{ if(e.key===' ') holding=false; });
+},true);
+addEventListener('keyup',e=>{ if(e.key===' '||e.code==='Space') holding=false; },true);
+addEventListener('blur',()=>{ holding=false; });   /* switching windows mid-hold doesn't leave it stuck on */
 addEventListener('resize',layout);
 
 /* Intro: a short synopsis; the story starts on Begin */
