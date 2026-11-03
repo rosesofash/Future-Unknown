@@ -2,3 +2,7 @@
 Thumbs.db
 *.mov
 exports/
+
+# private notes, kept locally only
+CLAUDE.md
+INTERVIEW-SELECTS.md
