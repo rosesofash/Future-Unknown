@@ -53,12 +53,17 @@ const SOURCES = {
    popup: a photo that pops up in the centre when this card first opens.
    video: a video in the card that only loads when clicked.
    a fact with img: clicking that clipping opens the image.
+   transcript: his words in that clip, word for word (INTERVIEW-SELECTS.md), hidden until "Read transcript" is clicked.
    more: extra clips from the interview, listed under the clippings ("More from him").
          title is a short description of the clip, not a quote. */
 const STOPS = [
   { id:'sri-lanka', side:'left', art:'img/sri-lanka.png', label:'Sri Lanka', coord:'7.9°N 80.8°E',
     when:'', cta:'Click the flag',
-    audio:'audio/01-sri-lanka.mp3', quote:'If I stay there, there may be a danger for me.',
+    audio:'audio/01-sri-lanka.mp3',
+    transcript:[
+      "So I decided to leave the country. If I stay there, there may be a danger for me.",
+      "And so I left the country, finally. That time I was able to take the flight. I managed to come behind so many hurdles and troubles to get to Colombo, to the airport, because of the war. And there's so many checkpoints… There was two incidents that I would have been died. But anyway, I managed to escape. They started to shoot randomly, and people all over the place, scattered. So somehow I was running, and I was lucky to survive."
+    ], quote:'If I stay there, there may be a danger for me.',
     more:[
       {audio:'audio/set-aside/parents-in-jaffna-targeting-men.mp3', title:'His parents in Jaffna, and who was being targeted'},
       {audio:'audio/set-aside/cousin-knew-the-way.mp3', title:'A cousin who knew the way to Germany'}
@@ -68,7 +73,12 @@ const STOPS = [
     ]},
   { id:'germany', side:'right', art:'img/germany.png', label:'West Germany', coord:'52.5°N 13.4°E',
     when:'', cta:'Click Germany',
-    audio:'audio/02-germany.mp3', quote:'Then we cannot work… we cannot go out of this area… How long we can live like that, you know?',
+    audio:'audio/02-germany.mp3',
+    transcript:[
+      "Then we cannot work. We have a barrier, where we cannot go out of this area… we have to live in that area. How long we can live like that, you know?",
+      "Approached me, and we trusted them. We thought, okay, it's a good opportunity, so we can come to Canada. We can manage English.",
+      "They said it's going to be a kind of cruise. So we didn't have any choice. That's all, we believed it, and we decided to go, come with the boat."
+    ], quote:'Then we cannot work… we cannot go out of this area… How long we can live like that, you know?',
     more:[
       {audio:'audio/set-aside/shelter-food-cannot-study.mp3', title:'Shelter and food, but no chance to study'},
       {audio:'audio/set-aside/camps-and-smugglers.mp3', title:'The camps, and the smugglers'}
@@ -80,7 +90,12 @@ const STOPS = [
     ]},
   { id:'aurigae', side:'left', art:'img/aurigae.png', label:'Aurigae · the “cruise”', coord:'53.3°N 8.5°E', dashesAfter:5, artLift:10,
     when:'July 28, 1986', cta:'Click the ship',
-    audio:'audio/03-ship.mp3', quote:'When we reached the boat, it was a cargo boat… I already left the city and we cannot go back.',
+    audio:'audio/03-ship.mp3',
+    transcript:[
+      "But eventually the story was different. When we reached the boat, it was a cargo boat. Not a regular passenger boat… I already left the city and we cannot go back. And then I was fear and everything.",
+      "I think they used to deliver animals, and oil, kind of cargo. Very rusted and smelly.",
+      "And then when we went inside, there was food that was dumped about a month ago. Old, moldy… fungus, dumped like a hill. Bread, especially bread. Thousands of breads piled like a hill."
+    ], quote:'When we reached the boat, it was a cargo boat… I already left the city and we cannot go back.',
     more:[
       {audio:'audio/set-aside/food-pile-seasick.mp3', title:'The canned food, and the seasickness'},
       {audio:'audio/set-aside/sharing-soup-with-135.mp3', title:'One soup shared among about 135 people'},
@@ -92,7 +107,12 @@ const STOPS = [
     ]},
   { id:'lifeboats', side:'right', art:'img/lifeboat.png', label:'The lifeboats', coord:'Middle of the sea', bed:'sea',
     when:'August 1986', cta:'Click the lifeboat',
-    audio:'audio/04-lifeboat.mp3', quote:'Seventy people in each. Can you imagine? It\'s only carry 35, but it doubled it up.',
+    audio:'audio/04-lifeboat.mp3',
+    transcript:[
+      "And eventually they left us very far away, about 200, 300 miles away.",
+      "In the small boat. Two boats with one engine… they tied each other… and nobody knows how to ride the boat. We are not experienced. We are regular people, not from fishermen families… The boat can only carry 30 people each, but we were 135 or something. Seventy people in each. Can you imagine? It's only carry 35, but it doubled it up. And we was just floating in the sea. We don't know where to go and how to do.",
+      "So after three days, we were just floating on the sea without any help. And the water is coming into the boat, so we have to put the water out of the boat many times. And we were falling asleep… we will fall down into the sea, and nobody knows how to swim, because we didn't eat for several days."
+    ], quote:'Seventy people in each. Can you imagine? It\'s only carry 35, but it doubled it up.',
     more:[
       {audio:'audio/set-aside/STAR-family-with-children-chains.mp3', title:'The family with small children'},
       {audio:'audio/set-aside/fuel-ran-out-tools-fell.mp3', title:'The fuel ran out, and the tools fell into the sea'},
@@ -106,7 +126,13 @@ const STOPS = [
   { id:'rescue', side:'left', art:'img/canada.png', label:'St. Shott\'s, Newfoundland', coord:'46.6°N 53.6°W',
     when:'August 11, 1986', cta:'Click the flag',
     popup:{src:'img/aug-1986-boat.jpg', caption:'A group of Sri Lankan refugees on the deck of a tug boat that rescues them off the coast of Newfoundland, 12 August 1986.', s:'cpPhoto'},
-    audio:'audio/05-rescue.mp3', quote:'All of a sudden the sun came… We thought we are almost dying.',
+    audio:'audio/05-rescue.mp3',
+    transcript:[
+      "…just floating, floating, floating, floating. And third day, it was kind of dark, and all of a sudden the sun came. We were able to see some boats fishing there, so we were waving. We thought we are almost dying, and people were praying, and hugging each other.",
+      "And then we were able to see. There was a fisherman, and we waved our clothes and everything, and they saw us. So they came to us, and immediately took us and put us in their boat.",
+      "Yeah, luckily everybody survived.",
+      "Welcome to Canada. Welcome to Canada. Welcome to Canada."
+    ], quote:'All of a sudden the sun came… We thought we are almost dying.',
     more:[
       {audio:'audio/set-aside/boat-didnt-capsize-70-each.mp3', title:'Seventy in each boat, and it didn\'t capsize'},
       {audio:'audio/set-aside/fishermen-radioed-for-help.mp3', title:'The fishermen radio for help'},
@@ -122,7 +148,11 @@ const STOPS = [
   { id:'canada', side:'right', art:'img/canada.png', label:'Canada', coord:'Newfoundland',
     when:'1986 onward', cta:'Click Canada',
     video:{embed:'https://www.cbc.ca/i/phoenix/player/syndicate/?mediaId=1.3183205', title:'CBC News', s:'cbcVideo'},
-    audio:'audio/06-canada.mp3', quote:'We want to do something and do well. That\'s the reason we came.',
+    audio:'audio/06-canada.mp3',
+    transcript:[
+      "They thought that we came from Sri Lanka. That is the only part they didn't like… unfortunately, we have to come from Germany as well, because there's no life for us.",
+      "But unfortunately, we have to escape from our own country. And Germany is the second time… We are human. We don't only just live for life. We want to do something and do well. That's the reason we came, and we are contributing to Canada now."
+    ], quote:'We want to do something and do well. That\'s the reason we came.',
     more:[
       {audio:'audio/set-aside/permanent-residence-took-a-while.mp3', title:'Why permanent residence took a while'},
       {audio:'audio/set-aside/thankful-to-canada.mp3', title:'Thankful to Canada'}
