@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Future: Unknown</title>
+  
+<link rel="preconnect" href="https://fonts.googleapis.com">  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" href="https://use.typekit.net/luo0xfs.css">
+  <link rel="stylesheet" href="https://use.typekit.net/msm8fcd.css">  <!-- Futura PT (Adobe Fonts), for the smaller labels -->  <!-- Active and Modulator (Adobe Fonts); Kalam stays loaded above in case we switch back -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="page">
+  <div id="stage">
+    <p class="wt">Future: Unknown<small>A documentary by Anjena Anandakumar</small></p>
+    <svg id="map" aria-label="The journey, as a dotted line">
+      <defs><radialGradient id="glow"><stop offset="0" stop-color="#f0b23a" stop-opacity=".55"/><stop offset="1" stop-color="#f0b23a" stop-opacity="0"/></radialGradient>
+      <filter id="wobble" x="-20%" y="-20%" width="140%" height="140%"><feTurbulence type="fractalNoise" baseFrequency=".045" numOctaves="2" seed="4"/><feDisplacementMap in="SourceGraphic" scale="2.6"/></filter></defs>
+      <g id="dashes"></g>
+      <g id="layer"></g>
+    </svg>
+  </div>
+</div>
+
+<div class="tools" id="tools">
+  <button class="tool" id="skipBtn" type="button">Skip to end</button>
+  <button class="tool" id="snd" type="button">Sound on</button>
+</div>
+<div class="day" id="day"><b>DAY 1</b><span></span></div>
+<div class="hint blink" id="hint">Click the flag</div>
+<aside class="card" id="card" aria-live="polite"></aside>
+<div class="lightbox" id="lightbox" hidden><figure><button class="lb-x" type="button" aria-label="Close photo">×</button><img alt=""><figcaption></figcaption></figure></div>
+
+<div class="sheet" id="end" hidden>
+  <div class="in">
+    <p class="endline">They were let in.</p>
+    <p class="endline">A year later, after another boat arrived, Canada moved to tighten the law.</p>
+    <h3>Sources</h3>
+    <ul id="srcList"></ul>
+    <div class="endbtns"><button class="next" id="replay" type="button">Watch again</button><button class="next close" id="explore" type="button">Explore the map</button></div>
+  </div>
+</div>
+
+<script src="js/story.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
