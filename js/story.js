@@ -76,9 +76,9 @@ const STOPS = [
       {audio:'audio/set-aside/cousin-knew-the-way.mp3', title:'A cousin who knew the way to Germany'}
     ],
     facts:[
-      {t:'In 2022, Canada\'s House of Commons unanimously acknowledged the genocide of Tamils in Sri Lanka and named May 18 Tamil Genocide Remembrance Day.', s:'hoc'},
       {t:'Mullivaikkal, 2009. The war he fled ended in 2009. To this day, no one has been held accountable for the crimes committed.', s:'aj19', img:{src:'img/mullivaikkal-2009.jpg', label:'View the photo (content warning)',
-        caption:'Mullivaikkal, 2009. The war he fled ended in 2009. To this day, no one has been held accountable for the crimes committed.', s:['tamilHeritage','aj19'], cw:'This photo shows the aftermath of violence at the end of the war.'}}
+        caption:'Mullivaikkal, 2009. The war he fled ended in 2009. To this day, no one has been held accountable for the crimes committed.', s:['tamilHeritage','aj19'], cw:'This photo shows the aftermath of violence at the end of the war.'}},
+      {t:'In 2022, Canada\'s House of Commons unanimously acknowledged the genocide of Tamils in Sri Lanka and named May 18 Tamil Genocide Remembrance Day.', s:'hoc'}
     ]},
   { id:'germany', side:'right', art:'img/germany.png', label:'West Germany', coord:'52.5°N 13.4°E',
     when:'', year:'1984–1986', cta:'Click Germany',
