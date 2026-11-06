@@ -36,7 +36,7 @@ const SOURCES = {
   cbc16: ['CBC News, "Tamil refugees mark 30 years in Canada" (2016)', 'https://amp.cbc.ca/news/canada/newfoundland-labrador/tamil-refugees-mark-30-years-in-canada-1.3694420', 'CBC News (2016)'],
   vocm:  ['VOCM News', 'https://vocm.com/?p=306594'],
   rh:    ['Refugee History, "Humanitarianism in Newfoundland" (2022)', 'https://refugeehistory.org/blog/2022/1/20/humanitarianism-in-newfoundland-the-rescue-of-tamil-refugees-in-1986'],
-  interview:['Interview by Anjena Anandakumar, October 25, 2026', ''],
+  interview:['Interview by Ashley Anandakumar, October 25, 2026', ''],
   cpPhoto:['Canadian Press photo, via Pier 21, "The dramatic rescue of 155 people off Newfoundland, August 1986"', 'https://pier21.ca/monthly-feature/dramatic-rescue-155-people-newfoundland-august-1986'],
   star86:['The Toronto Star, "Ship at centre of refugee storm," August 16, 1986, p. A8, via Refugee History', 'https://refugeehistory.org/blog/2022/1/20/humanitarianism-in-newfoundland-the-rescue-of-tamil-refugees-in-1986'],
   cbcVideo:['CBC, "Sri Lankan migrants rescued off Newfoundland in 1986," The National, August 12, 1986 (CBC Archives video)', 'https://www.cbc.ca/player/play/video/1.3183205'],
